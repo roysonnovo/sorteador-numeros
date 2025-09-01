@@ -6,15 +6,20 @@ function sortear(){
     let sorteados = [];
     let numero;
 
-    for (let i = 0; i <  qtd; i++) {
+    for (let i = 0; i < qtd; i++) {
         numero = obtNum(de, ate);
+
+        while (sorteados.includes(numero)) {
+            numero = obtNum(de, ate);
+        }
+
         sorteados.push(numero);
     }
-    alert(sorteados);
+    
+    let resultado = document.getElementById('resultado');
+    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
 }
 
 function obtNum(min,max){
-
 return Math.floor(Math.random() * (max - min + 1)) + min;
-
 }
